@@ -1,0 +1,6 @@
+{
+  "name": "Building gRPC Service Server Note CRUD API with node.js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
