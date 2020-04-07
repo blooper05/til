@@ -1,9 +1,10 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Req } from '@nestjs/common';
+import { Request } from 'express';
 
 @Controller('cats')
 export class CatsController {
   @Get()
-  findAll(): string {
-    return 'This action returns all cats';
+  findAll(@Req() request: Request): string {
+    return `This action returns all cats, to IP Address: ${request.ip}`;
   }
 }
