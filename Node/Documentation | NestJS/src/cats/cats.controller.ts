@@ -8,7 +8,7 @@ export class CatsController {
     return 'This action adds a new cat';
   }
 
-  @Get()
+  @Get('ab*cd')
   findAll(@Req() request: Request): string {
     return `This action returns all cats, to IP Address: ${request.ip}`;
   }
