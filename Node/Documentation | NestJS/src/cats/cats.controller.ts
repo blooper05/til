@@ -1,5 +1,6 @@
 import { Controller, Get, Req, Post, HttpCode, Header, Redirect, Query, Param } from '@nestjs/common';
 import { Request } from 'express';
+import { Observable, of } from 'rxjs';
 
 @Controller('cats')
 export class CatsController {
@@ -16,8 +17,8 @@ export class CatsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id): string {
-    return `This action returns a ${id} cat`;
+  findOne(@Param('id') id): Observable<string> {
+    return of(`This action returns a ${id} cat`);
   }
 
   @Get('docs')
