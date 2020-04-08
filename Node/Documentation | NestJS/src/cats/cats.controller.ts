@@ -2,19 +2,23 @@ import { Controller, Get, Req, Post, HttpCode, Header, Redirect, Query, Param, B
 import { Request } from 'express';
 import { Observable, of } from 'rxjs';
 import { CreateCatDto } from './dto/create-cat.dto';
+import { CatsService } from './cats.service';
+import { Cat } from './interfaces/cat.interface';
 
 @Controller('cats')
 export class CatsController {
+  constructor(private catsService: CatsService) {}
+
   @Post()
   @HttpCode(204)
   @Header('Cache-Control', 'none')
-  create(@Body() createCatDto: CreateCatDto): string {
-    return 'This action adds a new cat';
+  create(@Body() createCatDto: CreateCatDto) {
+    this.catsService.create(createCatDto);
   }
 
-  @Get('ab*cd')
-  async findAll(@Req() request: Request): Promise<string> {
-    return `This action returns all cats, to IP Address: ${request.ip}`;
+  @Get()
+  async findAll(): Promise<Cat[]> {
+    return this.catsService.findAll();
   }
 
   @Get(':id')
