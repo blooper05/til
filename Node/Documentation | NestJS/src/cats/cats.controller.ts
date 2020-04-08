@@ -1,4 +1,4 @@
-import { Controller, Get, Req, Post, HttpCode, Header, Redirect, Query } from '@nestjs/common';
+import { Controller, Get, Req, Post, HttpCode, Header, Redirect, Query, Param } from '@nestjs/common';
 import { Request } from 'express';
 
 @Controller('cats')
@@ -13,6 +13,11 @@ export class CatsController {
   @Get('ab*cd')
   findAll(@Req() request: Request): string {
     return `This action returns all cats, to IP Address: ${request.ip}`;
+  }
+
+  @Get(':id')
+  findOne(@Param() params): string {
+    return `This action returns a ${params.id} cat`;
   }
 
   @Get('docs')
