@@ -19,7 +19,7 @@ export class CatsController {
   }
 
   @Get()
-  @UseFilters(new HttpExceptionFilter())
+  @UseFilters(HttpExceptionFilter)
   async findAll(): Promise<Cat[]> {
     // return this.catsService.findAll();
     throw new ForbiddenException();
