@@ -7,6 +7,7 @@ import { CreateCatDto } from './dto/create-cat.dto';
 import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
 
+@UseFilters(HttpExceptionFilter)
 @Controller('cats')
 export class CatsController {
   constructor(private catsService: CatsService) {}
@@ -19,7 +20,6 @@ export class CatsController {
   }
 
   @Get()
-  @UseFilters(HttpExceptionFilter)
   async findAll(): Promise<Cat[]> {
     // return this.catsService.findAll();
     throw new ForbiddenException();
