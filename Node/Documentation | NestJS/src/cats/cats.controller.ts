@@ -1,13 +1,11 @@
 import { Controller, Get, Req, Post, HttpCode, Header, Redirect, Query, Param, Body, UseFilters } from '@nestjs/common';
 import { Request } from 'express';
 import { Observable, of } from 'rxjs';
-import { HttpExceptionFilter } from '../common/filter/http-exception.filter'
-import { ForbiddenException } from '../common/exception/forbidden.exception'
+import { ForbiddenException } from '../common/exception/forbidden.exception';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
 
-@UseFilters(HttpExceptionFilter)
 @Controller('cats')
 export class CatsController {
   constructor(private catsService: CatsService) {}
