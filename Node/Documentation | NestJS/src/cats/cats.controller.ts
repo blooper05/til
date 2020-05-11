@@ -11,6 +11,7 @@ import {
 } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
 import { ForbiddenException } from '../common/exception/forbidden.exception';
+import { ParseIntPipe } from '../common/pipe/parse-int.pipe';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
@@ -33,7 +34,7 @@ export class CatsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id): Observable<string> {
+  findOne(@Param('id', new ParseIntPipe()) id): Observable<string> {
     return of(`This action returns a ${id} cat`);
   }
 
