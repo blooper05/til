@@ -11,6 +11,7 @@ import {
 } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
 import { Roles } from '../common/decorator/roles.decorator';
+import { User } from '../common/decorator/user.decorator';
 import { ForbiddenException } from '../common/exception/forbidden.exception';
 import { ParseIntPipe } from '../common/pipe/parse-int.pipe';
 import { CreateCatDto } from './dto/create-cat.dto';
@@ -36,7 +37,11 @@ export class CatsController {
   }
 
   @Get(':id')
-  findOne(@Param('id', new ParseIntPipe()) id): Observable<string> {
+  findOne(
+    @Param('id', new ParseIntPipe()) id,
+    @User() user: UserEntity,
+  ): Observable<string> {
+    console.log(user);
     return of(`This action returns a ${id} cat`);
   }
 
