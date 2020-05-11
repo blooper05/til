@@ -12,6 +12,7 @@ import {
 import { Observable, of } from 'rxjs';
 import { Roles } from '../common/decorator/roles.decorator';
 import { User } from '../common/decorator/user.decorator';
+import { Auth } from '../common/decorator/auth.decorator';
 import { ForbiddenException } from '../common/exception/forbidden.exception';
 import { ParseIntPipe } from '../common/pipe/parse-int.pipe';
 import { CreateCatDto } from './dto/create-cat.dto';
