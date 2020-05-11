@@ -10,6 +10,7 @@ import {
   Param,
   Body,
   UseFilters,
+  UsePipes,
 } from '@nestjs/common';
 import { Request } from 'express';
 import { Observable, of } from 'rxjs';
@@ -26,7 +27,8 @@ export class CatsController {
   @Post()
   @HttpCode(204)
   @Header('Cache-Control', 'none')
-  create(@Body(new ValidationPipe()) createCatDto: CreateCatDto) {
+  @UsePipes(new ValidationPipe())
+  create(@Body() createCatDto: CreateCatDto) {
     this.catsService.create(createCatDto);
   }
 
