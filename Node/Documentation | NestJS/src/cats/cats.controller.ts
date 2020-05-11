@@ -8,9 +8,9 @@ import {
   Query,
   Param,
   Body,
-  SetMetadata,
 } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
+import { Roles } from '../common/decorator/roles.decorator';
 import { ForbiddenException } from '../common/exception/forbidden.exception';
 import { ParseIntPipe } from '../common/pipe/parse-int.pipe';
 import { CreateCatDto } from './dto/create-cat.dto';
@@ -24,7 +24,7 @@ export class CatsController {
   @Post()
   @HttpCode(204)
   @Header('Cache-Control', 'none')
-  @SetMetadata('roles', ['admin'])
+  @Roles('admin')
   create(@Body() createCatDto: CreateCatDto) {
     this.catsService.create(createCatDto);
   }
