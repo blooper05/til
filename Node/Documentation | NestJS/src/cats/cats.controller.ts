@@ -14,7 +14,7 @@ import {
 import { Request } from 'express';
 import { Observable, of } from 'rxjs';
 import { ForbiddenException } from '../common/exception/forbidden.exception';
-import { JoiValidationPipe } from '../common/pipe/joi-validation.pipe'
+import { ValidationPipe } from '../common/pipe/validation.pipe';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
@@ -26,8 +26,7 @@ export class CatsController {
   @Post()
   @HttpCode(204)
   @Header('Cache-Control', 'none')
-  @UsePipes(new JoiValidationPipe(createCatSchema))
-  create(@Body() createCatDto: CreateCatDto) {
+  create(@Body(new ValidationPipe()) createCatDto: CreateCatDto) {
     this.catsService.create(createCatDto);
   }
 
