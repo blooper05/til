@@ -4,6 +4,7 @@ import { AllExceptionsFilter } from './common/filter/all-exceptions.filter';
 import { ValidationPipe } from './common/pipe/validation.pipe';
 import { RolesGuard } from './common/guard/roles.guard';
 import { LoggingInterceptor } from './common/interceptor/logging.interceptor';
+import { TransformInterceptor } from './common/interceptor/transform.interceptor';
 import { logger } from './common/middleware/logger.middleware';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -31,6 +32,10 @@ import { CatsModule } from './cats/cats.module';
     {
       provide: APP_INTERCEPTOR,
       useClass: LoggingInterceptor,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: TransformInterceptor,
     },
   ],
 })
