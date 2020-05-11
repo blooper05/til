@@ -8,6 +8,7 @@ import {
   Query,
   Param,
   Body,
+  SetMetadata,
 } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
 import { ForbiddenException } from '../common/exception/forbidden.exception';
@@ -23,6 +24,7 @@ export class CatsController {
   @Post()
   @HttpCode(204)
   @Header('Cache-Control', 'none')
+  @SetMetadata('roles', ['admin'])
   create(@Body() createCatDto: CreateCatDto) {
     this.catsService.create(createCatDto);
   }
