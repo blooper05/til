@@ -27,7 +27,7 @@ export class CatsController {
   @Post()
   @HttpCode(204)
   @Header('Cache-Control', 'none')
-  @UsePipes(new ValidationPipe())
+  @UsePipes(ValidationPipe)
   create(@Body() createCatDto: CreateCatDto) {
     this.catsService.create(createCatDto);
   }
