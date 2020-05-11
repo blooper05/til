@@ -39,9 +39,9 @@ export class CatsController {
   @Get(':id')
   findOne(
     @Param('id', new ParseIntPipe()) id,
-    @User() user: UserEntity,
+    @User('firstName') firstName: string,
   ): Observable<string> {
-    console.log(user);
+    console.log(`Hello ${firstName}`);
     return of(`This action returns a ${id} cat`);
   }
 
