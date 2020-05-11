@@ -1,7 +1,6 @@
 import {
   Controller,
   Get,
-  Req,
   Post,
   HttpCode,
   Header,
@@ -9,13 +8,9 @@ import {
   Query,
   Param,
   Body,
-  UseFilters,
-  UsePipes,
 } from '@nestjs/common';
-import { Request } from 'express';
 import { Observable, of } from 'rxjs';
 import { ForbiddenException } from '../common/exception/forbidden.exception';
-import { ValidationPipe } from '../common/pipe/validation.pipe';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
@@ -27,7 +22,6 @@ export class CatsController {
   @Post()
   @HttpCode(204)
   @Header('Cache-Control', 'none')
-  @UsePipes(ValidationPipe)
   create(@Body() createCatDto: CreateCatDto) {
     this.catsService.create(createCatDto);
   }
