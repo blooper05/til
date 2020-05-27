@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint src --ext .ts"
+  },
   "dependencies": {
     "@slack/bolt": "^2.1.1",
     "dotenv": "^8.2.0"
