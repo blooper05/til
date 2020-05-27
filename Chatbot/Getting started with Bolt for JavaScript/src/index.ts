@@ -31,10 +31,10 @@ app.message('hello', async ({ message, say }) => {
   });
 });
 
-app.action('button_click', async ({ body, ack, say }) => {
+app.action('button_click', async ({ body, ack, respond }) => {
   // Acknowledge the action
   await ack();
-  await say(`<@${body.user.id}> clicked the button`);
+  await respond(`<@${body.user.id}> clicked the button`);
 });
 
 (async () => {
