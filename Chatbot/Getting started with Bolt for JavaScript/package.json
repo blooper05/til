@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint src --ext .ts --fix"
+    "lint:fix": "eslint src --ext .ts --fix",
+    "start:dev": "nodemon --config .nodemon.json --legacy-watch"
   },
   "dependencies": {
     "@slack/bolt": "^2.1.1",
